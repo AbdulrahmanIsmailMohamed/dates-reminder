@@ -1,25 +1,33 @@
-import { Button, Col, Container, Row } from "react-bootstrap";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Container } from "react-bootstrap";
+import { person } from "./data";
+import { ListContent } from "./components/ListContent";
+import { ListCount } from "./components/ListCount";
+import { ListAction } from "./components/ListAction";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [personData, setPersonData] = useState(person);
+
+  // it run when the page refresh or load
+  useEffect(() => {
+    setPersonData([]);
+  }, []);
+
+  const deleteItems = () => {
+    setPersonData([]);
+  };
+
+  const showItems = () => {
+    setPersonData(person);
+  };
+
   return (
-    <div className="font color-body">
+    <div className="font color-body py-5">
       <Container className="py-5">
-        <Row className="justify-content-center">
-          <Col sm="8" className="">
-            لديك اربع مواعيد اليوم:
-          </Col>
-        </Row>
-        <Row className="justify-content-center">
-          <Col sm="8" className="">
-            <div className="rectangle"></div>
-          </Col>
-        </Row>
-        <Row className="justify-content-center">
-          <Col sm="8" className="d-flex justify-content-between">
-            <Button className="btn-style p-2">مسح الكل</Button>
-            <Button className="btn-style p-2">عرض البيانات</Button>
-          </Col>
-        </Row>
+        <ListCount person={personData} />
+        <ListContent person={personData} />
+        <ListAction deleteItems={deleteItems} showItems={showItems} />
       </Container>
     </div>
   );
