@@ -1,14 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Col, Row } from "react-bootstrap";
 import { ErrorNotFound } from "./ErrorNotFount";
+import { ListProps, Person } from "../types/person.type";
 
-export const ListContent = ({ person }) => {
+export const ListContent = ({person}: ListProps) => {
   return (
     <Row className="justify-content-center">
       <Col sm="8" className="">
         <div className="rectangle my-2 px-3">
           {person.length !== 0 ? (
-            person.map((item: any) => (
+            person.map((item: Person) => (
               <div key={item.id} className="d-flex border-bottom py-2">
                 <img
                   className="img-avatar"

@@ -1,7 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Col, Row } from "react-bootstrap";
 
-export const ListAction = ({ deleteItems, showItems }) => {
+interface Props {
+  deleteItems: () => void;
+  showItems: () => void;
+}
+
+export const ListAction = ({ deleteItems, showItems }: Props) => {
   return (
     <Row className="justify-content-center">
       <Col sm="8" className="d-flex justify-content-between">
